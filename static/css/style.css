@@ -1,0 +1,564 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;900&display=swap');
+ 
+:root {
+    --header-height: 3.5rem;
+
+    --hue: 181;
+    --first-color: hsl(var(--hue), 91%, 54%);
+    --first-color-alt: hsl(var(--hue), 91%, 50%);
+    --title-color: hsl(var(--hue), 4%, 100%);
+    --text-color: hsl(var(--hue),4%, 85%);
+    --text-color-light: hsl(var(--hue), 4%, 55%);
+    --body-color: linear-gradient(130deg, hsl(var(--hue), 27%, 43%) 0%, hsl(var(--hue), 42%, 86%) 100%);
+    --container-color: linear-gradient(136deg, hsl(var(--hue), 15%, 48%) 0%, hsl(var(--hue), 28%, 65%) 100%);
+    --input-color: hsl(var(--hue), 25%, 66%);
+    /*--body-color: linear-gradient(90deg, hsl(104, 28%, 40%) 0%, hsl(58, 28%, 40%) 100%); 
+    --container-color: linear-gradient(136deg, hsl(104, 28%, 35%) 0%, hsl(58, 28%, 35%) 100%);*/
+    --dialog-color: hsl(181, 27%, 32%);
+    --body-font: 'Poppins', sans-serif;
+    --biggest-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2--font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-black: 900;
+
+    --mb-0-25: .25rem;
+    --mb-0-5: .5rem;
+    --mb-0-75: .75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+
+    --z-tooltip: 10;
+    --z-fixed: 100;
+
+}
+
+@media screen and (min-width:992px) {
+    :root {
+        --biggest-font-size: 4rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: 0.875rem;
+        --smaller-font-size: .813rem;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: var(--header-height) 0 0 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background: var(--body-color);
+    color: var(--text-color);
+}
+
+h1, h2, h3, h4 {
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+}
+
+ol, ul {
+    list-style: none;
+}
+
+ul{
+    margin-block-start: 1em;
+    margin-block-start: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;  
+}
+
+li {
+    text-align: -webkit-match-parent;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button, input {
+    border: none;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+canvas {
+    position: absolute;
+    z-index: 1;
+    left: 85px;
+    top:  70px;
+}
+
+fieldset {
+    width: 100%;
+}
+
+input {
+    background-color: var(--input-color);
+    padding: 5px;
+    font-family: var(--body-font);
+}
+input:focus {
+    border: 1px dotted #000;
+}
+
+
+.menu-bar {
+    bottom: 0;
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    width: 40px;
+    top: 70px;
+    left: 20px;
+    z-index: 98;
+    left: 20px;
+    margin: 5px auto 2px;
+}
+
+.tool-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+    font-size: 0.5rem;
+    background: hsla(147, 11%, 58%, 0.7);
+    padding: 5px 5px 5px 5px;
+    border-radius: 6px;
+
+}
+
+.tool-menu li {
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    height: 32px;
+    margin-top: 2px;
+    position: relative;
+    
+    width: 32px;
+}
+
+.tool-menu button {
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+    transition: all 0.2s;
+}
+
+.tool-menu button:hover {
+    background: rgb(111, 139, 123);
+    color: #fff;
+}
+
+.active {
+    background-color: rgb(111, 139, 123);
+    color: rgb(255, 255, 255);
+}
+
+.inactive {
+    background-color: rgb(141, 182, 159);
+    color: black;
+}
+
+.menu-bar:not(.floating) {
+    width: 80px;
+    left: 0!important;
+    top: 70px!important;
+}
+
+.workspace {
+    width: 80%;
+    bottom: 0; 
+    z-index: 0;
+    touch-action: none;
+    vertical-align: top;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    right: 10px;
+    
+}
+
+.tooltip{
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+    color: #2f2f2f;
+    display: block;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    text-align: left;
+    transition: opacity 0.2s ease, margin 0.2s ease;
+    transition-delay: 0ms;
+    width: 150px;
+    z-index: 999;
+    padding: 3px 3px 3px 3px;
+}
+
+.active-tooltip {
+    opacity: 1;
+}
+
+.top-bar {
+    
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+}
+#menuTools {
+    background-color: rgba(15, 15, 15, 0.25);
+    display: flex;
+    height: 30px;
+    padding-left: 15px;
+   
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+
+.menu-tools {
+    display: block;
+    z-index: 99;
+}
+
+.menu-tools, .menu-tools li {
+    position: relative;
+}
+
+.menu-tools li {
+    display: block;
+    height: 30px;
+    position: relative;
+    padding: 0px 10px 0px 10px;
+}
+
+.menu-tools li:hover{
+    background-color: black;
+    color: white;
+    
+}
+
+.menu-tools li:hover ul{
+    display: block;
+}
+
+.menu-tools li.split {
+    background-color: rgba(80, 80, 80, 0.2);
+    cursor: default !important;
+    display: block;
+    height: 1px;
+    margin: 2px 10px;
+}
+
+.menu-tool label {
+    display: inline-block;
+}
+
+.menu-tool label, .menu-tool li {
+    cursor: pointer;
+    line-height: 30px;
+    padding: 0 10px;
+}
+
+
+.menu-tools ul{
+    background-color: #fffa;
+    border: 1px solid black;
+    box-shadow: 3px 3px 6px 0 rgb(0 0 0 / 20%);
+    cursor: default;
+    left: 0;
+    color: #000;
+    margin-right: 2px;
+    
+    padding: 0;
+    min-width: 150px;
+    display: none;
+    z-index: 99999;
+    position: absolute;
+    transition: opacity 0.3s ease;
+}
+
+.menu-tools, ol, ul {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-tools ul li {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    white-space: nowrap;
+    
+}
+
+.active-menu {
+    background: red;
+    opacity: 1;
+}
+
+
+.modal {
+    height: 100%;
+    max-height: 100%;
+    overflow: auto;
+    touch-action: none;
+    width: 100%;
+    z-index: 100;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.dialog {
+    background-color: var(--dialog-color);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    cursor: default;
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    left: 35%;
+    top: 15%;
+    z-index: 101;
+    display: none;
+    transition: 0.5s ease;
+}
+
+.close {
+    
+    
+    text-justify: center;
+    text-align: center;
+    padding: 2px;
+    font-size: 20px;
+    transition: 0.5s ease;
+    border-radius: 50%;
+}
+
+.close:hover {
+    transform: rotate(90deg);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.tab--container {
+    width: 100%;
+    max-width: 120 em;
+    background-color: hsl(147, 19%, 60%);
+    color: #455049;
+    padding: 0.25em;
+}
+
+.tab--container .tabList {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tab--container .tabTitle {
+    box-shadow: 1px 2px 2px rgba(15, 15, 15, 0.5);
+    background-color: #93BEA6;
+    border-radius: 6px;
+    padding: 0.5em;
+    margin: 0 0.25em 0 0;
+    transition: all .4s ease;
+}
+
+.tab--container .tabTitle.activeTab {
+    background-color: hsl(145, 10%, 43%);
+    color: white;
+}
+
+.tab--container .tabContent{
+    min-height: 300px;
+    position: relative;
+}
+
+.tab--container .bloqueContent{
+    background-color: hsl(147, 19%, 60%);
+    position: absolute;
+    
+    margin: 1em;
+    padding: 0.5em;
+    top: 0;
+    border: 1px solid black;
+    min-width: 90%;
+    display: none;
+    transition: all .4s ease;
+}
+
+
+.tab--container .bloqueContent label{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+.tab--container .bloqueContent.activeBlock {
+    display: block;
+}
+
+.boxContent{
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.boxTitle{
+    padding: 6px;
+}
+
+.rowProp {
+    width: 100%;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.rowProp label {
+    width: 60%;
+    text-align: right;
+    margin-right: 3px;
+}
+.rowProp input {
+    width: 40%;
+    height: 1.25rem;
+    font-size: 0.65rem;
+}
+
+.rowProp input:read-only {
+    background-color: hsl(81, 82%, 85%);
+}
+
+.rowProp input[type=number]::-webkit-inner-spin-button, 
+.rowProp input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.dialog--buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+
+.dialog--button {
+    box-shadow: 0 5px #999;
+    margin: 9px;
+    padding: 3px;
+    border-radius: 5px;
+    width: 80px;
+}
+
+.dialog--button:hover {
+    background-color: rgb(156, 121, 108);
+}
+
+.dialog--button:active {
+    box-shadow: 0 2px #777;
+    transform: translateY(3px);
+}
+
+.propertyBar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+    background: hsla(147, 11%, 58%, 0.7);
+    padding: 5px 5px 5px 5px;
+    border-radius: 6px;
+    position: absolute;
+    left: 890px;
+    top: 70px;
+    margin-top: 5px;
+    width: 200px;
+}
+
+
+.top-dialog, .topBar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: rgba(25, 25, 25, 0.1);
+    padding: 3px;
+    text-align: center;
+    border-radius: 5px 5px 0px 0px;
+}
+.titledialog{
+    text-align: center;
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #757575;
+    border-radius: .25rem
+}
+
+.content-dialog {
+    display: flex;
+    min-height: 300px;
+    width: 100%;
+    overflow-y: scroll;
+    max-height: 400px;
+}
+
+.helpBar{
+    position: absolute;
+    top: 600px;
+    z-index: 99;
+    background: rgba(15, 15, 15, 0.25);
+    width: 100%;
+}
+
+@media screen and (max-height:530px){
+    .menu-bar:not(.floating) {
+        width: 106px;
+        left: 0!important;
+        top: 766px!important;
+    }
+
+}

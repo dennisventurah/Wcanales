@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block  title %}
+HID - Redes - Unnamed.hid
+{% endblock %}
+
+{% block content %}
+
+<main class="main">
+  <div class="background">
+    <div class="window active" style="width: 800px">
+        <div class="title-bar">
+          <div class="title-bar-text">DCanales</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize" disabled></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+
+        <ul role="menubar" class="can-hover">
+            <li role="menuitem" tabindex="0" aria-haspopup="true">
+              Tirante Normal
+              <ul role="menu">
+                <li role="menuitem">
+                  <a id="tn-trapez">
+                    Sección Trapezoidal 
+                  </a>
+                </li>
+                <li role="menuitem">
+                  <a id="tn-parab">
+                    Sección Parabólica
+                  </a>
+                </li>
+                <li role="menuitem">
+                    <a id="tn-circ">
+                      Sección Circular
+                    </a>
+                  </li>
+                <li role="menuitem" class="has-divider">
+                  <a href="#menubar">
+                    Sección máxima eficiencia
+                  </a>
+                </li>
+                <li role="menuitem" class="has-divider">
+                    <a href="#menubar">
+                      Sección mínima infiltración
+                    </a>
+
+                  </li>
+              </ul>
+            </li>
+
+            <li role="menuitem" tabindex="0" aria-haspopup="true">
+              Tirante crítico
+              <ul role="menu">
+                <li role="menuitem"><a> Sección Trapezoidal </a></li>
+                <li role="menuitem"><a> Sección Parabólico </a></li>
+                <li role="menuitem"><a> Sección Circular </a></li>
+              </ul>
+            </li>
+
+            <li role="menuitem" tabindex="0" aria-haspopup="true">
+              Resalto Hidráulico
+              <ul role="menu">
+                <li role="menuitem"><a> Sección Rectangular </a></li>
+                <li role="menuitem"><a> Sección Trapezoidal </a></li>
+                <li role="menuitem"><a> Sección Parbólico </a></li>
+                <li role="menuitem"><a> Sección Circular </a></li>
+              </ul>
+            </li>
+
+            <li role="menuitem" tabindex="0" aria-haspopup="true">
+              Remanso
+              <ul role="menu">
+                <li role="menuitem"><a>Integración Gráfica</a></li>
+                <li role="menuitem"><a>Bakhmetff</a></li>
+                <li role="menuitem"><a>Bresse</a></li>
+                <li role="menuitem"><a>Directo por tramos</a></li>
+                <li role="menuitem"><a>Tramos fijos</a></li>
+              </ul>
+            </li>
+
+            <li role="menuitem" tabindex="0" aria-haspopup="true">
+              Medición
+              <ul role="menu">
+                <li role="menuitem"><a>Compuertas y Orificios</a></li>
+                <li role="menuitem"><a>Vertederos</a></li>
+                <li role="menuitem"><a>Sifones</a></li>
+              </ul>
+            </li>
+
+            <li role="menuitem" tabindex="0" aria-haspopup="true">
+              Estructuras
+              <ul role="menu">
+                <li role="menuitem"><a>Estructuras de Transición</a></li>
+                <li role="menuitem"><a>Vertedero Lateral</a></li>
+              </ul>
+            </li>
+
+          </ul>
+
+        <div class="window-body" id="win-body">
+      
+        </div>
+        <div class="status-bar">
+          <p class="status-bar-field">Presione F1 para abrir la ayuda</p>
+          <p class="status-bar-field">Progreso: 0%</p>
+          <p class="status-bar-field"> Hora: </p>
+        </div>
+      </div>
+        
+        <div id="dpi" style="height: 1in; width: 1in; left: 100%; position: fixed; top: 100%;"></div>
+    </section>
+  </div>
+</main>
+{% endblock %}
