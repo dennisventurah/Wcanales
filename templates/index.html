@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block  title %}
-HID - Redes - Unnamed.hid
+WCanales
 {% endblock %}
 
 {% block content %}
 
 <main class="main">
   <div class="background">
-    <div class="window active" style="width: 800px">
+    <div class="window glass active" style="max-height: 100%;min-width: 600px; max-width: 95%; margin: 0 5.5em;">
         <div class="title-bar">
-          <div class="title-bar-text">DCanales</div>
+          <div id="title-bar-text" class="title-bar-text">WCanales</div>
           <div class="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize" disabled></button>
@@ -22,70 +22,82 @@ HID - Redes - Unnamed.hid
               Tirante Normal
               <ul role="menu">
                 <li role="menuitem">
+                  <img src="{{url_for('static', filename='img/c_n_trap.png')}}" alt="" width="25px">
                   <a id="tn-trapez">
                     Sección Trapezoidal 
                   </a>
                 </li>
                 <li role="menuitem">
+                  <img src="{{url_for('static', filename='img/c_para.png')}}" alt="" width="25px">
                   <a id="tn-parab">
                     Sección Parabólica
                   </a>
                 </li>
-                <li role="menuitem">
+                <li role="menuitem" class="has-divider">
+                  <img src="{{url_for('static', filename='img/c_circ.png')}}" alt="" width="25px">
                     <a id="tn-circ">
                       Sección Circular
                     </a>
                   </li>
                 <li role="menuitem" class="has-divider">
-                  <a href="#menubar">
+                  <img src="{{url_for('static', filename='img/c_com.png')}}" alt="" width="25px">
+                  <a id="tn-caco">
+                    Sección de canal compuesto
+                  </a>
+                </li>
+                <li role="menuitem" class="has-divider">
+                  <img src="{{url_for('static', filename='img/c_n_trap.png')}}" alt="" width="25px">
+                  <a id="tn-meh">
                     Sección máxima eficiencia
                   </a>
                 </li>
                 <li role="menuitem" class="has-divider">
-                    <a href="#menubar">
+                  <img src="{{url_for('static', filename='img/c_n_trap.png')}}" alt="" width="25px">
+                    <a id="tn-mi">
                       Sección mínima infiltración
                     </a>
 
-                  </li>
+                </li>
               </ul>
             </li>
 
             <li role="menuitem" tabindex="0" aria-haspopup="true">
               Tirante crítico
               <ul role="menu">
-                <li role="menuitem"><a> Sección Trapezoidal </a></li>
-                <li role="menuitem"><a> Sección Parabólico </a></li>
-                <li role="menuitem"><a> Sección Circular </a></li>
+                <li role="menuitem"><img src="{{url_for('static', filename='img/c_n_trap.png')}}" alt="" width="25px"><a id="tc-trap"> Sección Trapezoidal </a></li>
+                <li role="menuitem"><img src="{{url_for('static', filename='img/c_para.png')}}" alt="" width="25px"><a id="tc-parab"> Sección Parabólico </a></li>
+                <li role="menuitem"><img src="{{url_for('static', filename='img/c_circ.png')}}" alt="" width="25px"><a id="tc-circ"> Sección Circular </a></li>
               </ul>
             </li>
 
             <li role="menuitem" tabindex="0" aria-haspopup="true">
               Resalto Hidráulico
               <ul role="menu">
-                <li role="menuitem"><a> Sección Rectangular </a></li>
-                <li role="menuitem"><a> Sección Trapezoidal </a></li>
-                <li role="menuitem"><a> Sección Parbólico </a></li>
-                <li role="menuitem"><a> Sección Circular </a></li>
+                <li role="menuitem"><img src="{{url_for('static', filename='img/c_rec.png')}}" alt="" width="25px"><a id="rh-rect"> Sección Rectangular </a></li>
+                <li role="menuitem"><img src="{{url_for('static', filename='img/c_n_trap.png')}}" alt="" width="25px"><a id="rh-trap"> Sección Trapezoidal </a></li>
+                
+                <li role="menuitem"><img src="{{url_for('static', filename='img/c_para.png')}}" alt="" width="25px"><a id="rh-parab"> Sección Parbólico </a></li>
+                <li role="menuitem"><img src="{{url_for('static', filename='img/c_circ.png')}}" alt="" width="25px"><a id="rh-circ"> Sección Circular </a></li>
               </ul>
             </li>
 
             <li role="menuitem" tabindex="0" aria-haspopup="true">
               Remanso
               <ul role="menu">
-                <li role="menuitem"><a>Integración Gráfica</a></li>
-                <li role="menuitem"><a>Bakhmetff</a></li>
-                <li role="menuitem"><a>Bresse</a></li>
-                <li role="menuitem"><a>Directo por tramos</a></li>
-                <li role="menuitem"><a>Tramos fijos</a></li>
+                <li role="menuitem"><a id="rm-ingr">Integración Gráfica</a></li>
+                <li role="menuitem"><a id="rm-bakh">Bakhmetff</a></li>
+                <li role="menuitem"><a id="rm-bre">Bresse</a></li>
+                <li role="menuitem"><a id="rm-dpt">Directo por tramos</a></li>
+                <li role="menuitem"><a id="rm-tf">Tramos fijos</a></li>
               </ul>
             </li>
 
             <li role="menuitem" tabindex="0" aria-haspopup="true">
               Medición
               <ul role="menu">
-                <li role="menuitem"><a>Compuertas y Orificios</a></li>
-                <li role="menuitem"><a>Vertederos</a></li>
-                <li role="menuitem"><a>Sifones</a></li>
+                <li role="menuitem"><a id="md-cyo">Compuertas y Orificios</a></li>
+                <li role="menuitem"><a id="md-vert">Vertederos</a></li>
+                <li role="menuitem"><a id="md-sif">Sifones</a></li>
               </ul>
             </li>
 
@@ -93,19 +105,31 @@ HID - Redes - Unnamed.hid
               Estructuras
               <ul role="menu">
                 <li role="menuitem"><a>Estructuras de Transición</a></li>
-                <li role="menuitem"><a>Vertedero Lateral</a></li>
+                <li role="menuitem" class="has-divider"><a>Vertedero Lateral</a></li>
+                <li role="menuitem"><a>Pérdida en canales</a></li>
+              </ul>
+            </li>
+
+            <li role="menuitem" tabindex="0" aria-haspopup="true">
+              Ayuda
+              <ul role="menu">
+                <li role="menuitem" class="has-divider"><a>Ayuda WCanales</a></li>
+                <li role="menuitem"><a>Acerca de...</a></li>
               </ul>
             </li>
 
           </ul>
 
         <div class="window-body" id="win-body">
-      
+          
+          
         </div>
+
         <div class="status-bar">
-          <p class="status-bar-field">Presione F1 para abrir la ayuda</p>
-          <p class="status-bar-field">Progreso: 0%</p>
-          <p class="status-bar-field"> Hora: </p>
+          <p id="f-help" class="status-bar-field">Presione F1 para abrir la ayuda</p>
+          <p class="status-bar-field" id="sb-progress">Progreso: 0%</p>
+          <a  style="text-decoration: none" class="clock24" id="tz24-1714757443-cc14810-eyJob3VydHlwZSI6MTIsInNob3dkYXRlIjoiMCIsInNob3dzZWNvbmRzIjoiMCIsInNob3d0aW1lem9uZSI6IjEiLCJ0eXBlIjoiZCIsImxhbmciOiJlcyJ9" title="Lima Hora" target="_blank"> Hora </a>
+<script type="text/javascript" src="//w.24timezones.com/l.js" async></script> 
         </div>
       </div>
         

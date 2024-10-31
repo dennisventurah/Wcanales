@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--  BOXICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <!--link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}"-->
-    <link rel="stylesheet" href="https://unpkg.com/7.css">
+    
+    <link rel="stylesheet" href="{{url_for('static', filename='css/7.css')}}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -25,11 +25,12 @@
     {% endblock %}
 
 
-
-    <script src="{{url_for('static', filename='js/plotUI.js')}}" type="module"></script>
-    <script src="{{url_for('static', filename='js/unitTypes.js')}}" type="module"></script>
+    <script src="{{url_for('static', filename='js/hidUtils.js')}}" type="module"></script>
     <script src="{{url_for('static', filename='js/mathUtils.js')}}" type="module"></script>
+    <script src="{{url_for('static', filename='js/plotUI.js')}}" type="module"></script>
+    <script src="{{url_for('static', filename='js/plotly3.2.js')}}" type="module"></script>
     <script src="{{url_for('static', filename='js/matrix.js')}}" type="module"></script>
-
+    
+    
 </body>
 </html>
