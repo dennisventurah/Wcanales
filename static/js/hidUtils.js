@@ -563,7 +563,7 @@ export function backm(q, b, z1, z2, s, n, y1, y2, nt){
         
         l_c7.push(l_c6[i]-l_c6[i-1]+l_c7[i-1]);
     }
-    return {yn: yn, yc:yc, M:M, N:N, J:J, y: l_c1, u:l_c2, v:l_c3, fu:l_c4, fv:l_c5, dx:l_c6, x:l_c7};
+    return {yn: yn, yc:yc, M:M, N:N, J:J, y: l_c1, u:l_c2, v:l_c3, fu:l_c4, fv:l_c5, dx:l_c6, x:l_c7.map((x)=> Math.abs(x))};
 
 }
 
