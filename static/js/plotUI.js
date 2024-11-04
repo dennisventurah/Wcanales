@@ -990,3 +990,4 @@ document.getElementById("rh-trap").addEventListener("click", f_rs_trap);
 document.getElementById("rh-parab").addEventListener("click", f_rs_para);
 document.getElementById("rh-circ").addEventListener("click", f_rs_circ);
 document.getElementById("rm-ingr").addEventListener("click", f_rm_int_g);
+document.getElementById("rm-bakh").addEventListener("click", f_rm_bakh);
