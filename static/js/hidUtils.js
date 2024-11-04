@@ -497,17 +497,19 @@ export function integra_gra(q, b, z1, z2, s, nm, y1, y2, n){
     let l_fy = new Array();
     let l_A = new Array();
     let l_dx = new Array();
-    let ar, eam, see, rh, fy, c7, dx;
+    let ar, eam, see, rh, fy, c7, dx, peri;
     let AA = 0;
     l_y.forEach(item=>{
         ar = area(item);
         eam = ea(item);
-        rh = ar/per(item);
+        peri = per(item)
+        rh = ar/peri;
         see = Math.pow((nm*q/ar)/Math.pow(rh, 2/3),2);
         c7 = 1-q*q*eam/G/Math.pow(ar,3);
         fy = c7/(s-see);
         l_a.push(ar);
         l_t.push(eam);
+        l_p.push(peri);
         l_R.push(rh);
         l_v.push(q/ar);
         l_se.push(see);
@@ -524,7 +526,7 @@ export function integra_gra(q, b, z1, z2, s, nm, y1, y2, n){
         l_A.push(AA);
     }
 
-    return {c1:l_y, c2:l_a, c3:l_t, c4:l_R, c5:l_v, c6:l_se, c7:l_c7, c8:l_sose, c9:l_fy, c10:l_dx, c11:l_A};
+    return {c1:l_y, c2:l_a, c3:l_p, c4:l_R, c5:l_t, c6:l_v, c7:l_se, c8:l_c7, c9:l_sose, c10:l_fy, c11:l_dx, c12:l_A};
 }
 
 export function backm(q, b, z1, z2, s, n, y1, y2, nt){
