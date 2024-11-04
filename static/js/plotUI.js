@@ -396,8 +396,6 @@ let f_caco = function(e){
                 document.getElementById('res-tf').value="Flujo Super-crítico"
             }
         
-            
-            
             var trace1 = {
                 x: res.px,
                 y: res.py,
@@ -861,8 +859,27 @@ let f_rs_circ = function(e){
     })
 }
 
-f_inicio();
-console.log(backm(5, 2, 1, 1, 0.001, 0.025, 0.5, 1.35, 5));
+let f_rm_int_g = function(e){
+    document.getElementById("title-bar-text").innerHTML = "WCanales - Curva de remanso - Integración gráfica"
+    const win_body = document.getElementById("win-body");
+    var data = '<fieldset style="margin: 5px;">    <legend> Información del Proyecto </legend>          <div class="field-row">      <label for="t-lugar" style="width: 10%;"> Lugar: </label>      <input id="t-lugar" type="text" style="width: 40%;">          <label for="t-name" style="width: 10%;"> Proyecto: </label>      <input id="t-name" type="text"  style="width: 40%;">    </div>              <div class="field-row">        <label for="t-tramo" style="width: 10%;"> Tramo: </label>        <input id="t-tramo" type="text" style="width: 40%;">                <label for="t-rev" style="width: 10%;"> Revestimiento: </label>        <input id="t-rev" type="text" style="width: 40%;">      </div>          </fieldset>  <div style="display: flex; flex-direction: row;">    <fieldset style="margin: 5px; width: 50%;">      <legend> Datos</legend>      <div class="field-row">        <label for="d-flow" style="width: 20%;"> Caudal: </label>        <input id="d-flow" type="number" style="width: 60%;">        <label for="d-flow" style="width: 20%;"> m3/s </label>              </div>           <div class="field-row">                            <label for="d-d" style="width: 20%;"> Diámetro: </label>        <input id="d-d" type="number" style="width: 60%;">        <label for="d-d" style="width: 20%;"> m </label>              </div>                 <div class="field-row" style="flex: content;">        <label for="d-y" style="width: 20%;"> Tirante (Y): </label>        <input id="d-y" type="number" style="width: 60%;">        <label for="d-y" style="width: 20%;"> m </label>      </div>        </fieldset>    <fieldset style="margin: 5px; width: 50%;">      <legend> Gráfica</legend>      <div id="graph-ui" style="width: 100%; height: 100%; background-color: rgb(255, 255, 255);"></div>    </fieldset>  </div>    <fieldset style="margin: 5px;">    <legend> Resultados </legend>       <div class="field-row">      <label for="res-yn" style="width: 10%;"> Tirante Conjugado (y): </label>      <input readonly= "readonly" id="res-yn" type="number" style="width: 25%;">      <label for="res-yn" style="width: 5%;"> m </label>      <span style="width: 10%;"></span>       <label for="res-fr" style="width: 10%;"> Número de Froude Conjugado (F): </label>      <input readonly= "readonly" id="res-fr" type="number" style="width: 25%;">      <label for="res-fr" style="width: 5%;"> m </label>    </div>    <div class="field-row">                        <label for="res-hr" style="width: 10%;"> Altura de resalto (h): </label>      <input readonly= "readonly" id="res-hr" type="number" style="width: 25%;">      <label for="res-hr" style="width: 5%;"> m </label>      <span style="width: 10%;"></span> <label for="res-de" style="width: 10%;"> Pérdida de energía en el resalto: </label>      <input readonly= "readonly" id="res-de" type="number" style="width: 25%;">      <label for="res-de" style="width: 5%;"> m </label>       </div>       </div>      </fieldset>  <fieldset style="margin: 5px;">    <button id="btn-calcular"> Calcular</button> <button id="btn-inicio"> Inicio</button> </fieldset>'
+    win_body.innerHTML = data;
+    document.getElementById('btn-inicio').addEventListener("click", function () {f_inicio();})
+    document.getElementById('btn-calcular').addEventListener("click", function () {
+        const q = parseFloat(document.getElementById("d-flow").value);
+        const y = parseFloat(document.getElementById("d-y").value);
+        const d = parseFloat(document.getElementById("d-d").value);
+        
+        const res = resalto_circ(q,d, y);
+          
+        document.getElementById('res-yn').value=round(res.y1, 6).toString();
+        document.getElementById('res-de').value=round(res.dE, 6).toString();
+        document.getElementById('res-fr').value=round(res.fr, 6).toString();
+        document.getElementById('res-hr').value=round(res.hr, 6).toString();
+
+    });
+}
+
 document.getElementById("tn-trapez").addEventListener("click", f_trapez);
 
 document.getElementById("tn-parab").addEventListener("click", f_parab);
