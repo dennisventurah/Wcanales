@@ -910,7 +910,61 @@ let f_rm_int_g = function(e){
         Plotly.newPlot('graph-ui', data, layout, {staticPlot: true});
     });
 }
+
+let f_rm_bakh = function(e){
+    document.getElementById("title-bar-text").innerHTML = "WCanales - Curva de remanso - Bakhmeteff"
+    const win_body = document.getElementById("win-body");
+    var data = '<div style="display: flex; flex-direction: row;">             <fieldset style="margin: 5px; width: 30%;">                     <legend> <b>Datos</b></legend>                     <div class="field-row">                         <label for="d-flow" style="width: 20%;"> Caudal: </label>                         <input id="d-flow" type="number" style="width: 60%;">                         <label for="d-flow" style="width: 20%;"> m3/s </label>                             </div>                          <div class="field-row">                                             <label for="d-b" style="width: 20%;"> Ancho de solera (b): </label>                         <input id="d-b" type="number" style="width: 60%;">                         <label for="d-b" style="width: 20%;"> m </label>                             </div>               <div class="field-row">                                             <label for="d-z1" style="width: 20%;"> Talud izquierdo: </label>                         <input id="d-z1" type="number" style="width: 60%;">                         <label for="d-z1" style="width: 20%;"> m/m </label>                             </div>               <div class="field-row">                                             <label for="d-z2" style="width: 20%;"> Talud derecho: </label>                         <input id="d-z2" type="number" style="width: 60%;">                         <label for="d-z2" style="width: 20%;"> m/m </label>                             </div>               <div class="field-row">                                             <label for="d-s" style="width: 20%;"> Pendiente (S): </label>                         <input id="d-s" type="number" style="width: 60%;">                         <label for="d-s" style="width: 20%;"> m/m </label>                             </div>               <div class="field-row">                                             <label for="d-n" style="width: 20%;"> Rugosidad (n): </label>                         <input id="d-n" type="number" style="width: 60%;">                         <label for="d-n" style="width: 20%;">  </label>                             </div>               <div class="field-row" style="flex: content;">                         <label for="d-y1" style="width: 20%;"> Tirante inicial (y1): </label>                         <input id="d-y1" type="number" style="width: 60%;">                         <label for="d-y1" style="width: 20%;"> m </label>                     </div>               <div class="field-row" style="flex: content;">                         <label for="d-y2" style="width: 20%;"> Tirante inicial (y2): </label>                         <input id="d-y2" type="number" style="width: 60%;">                         <label for="d-y2" style="width: 20%;"> m </label>                     </div>                 <div class="field-row" style="flex: content;">                         <label for="d-nt" style="width: 20%;"> Número de tramos (nt): </label>                         <input id="d-nt" type="number" style="width: 60%;">                         <label for="d-nt" style="width: 20%;"> m </label>                     </div>                     </fieldset>                 <fieldset style="margin: 5px; width: 70%;">                     <legend> <b>Gráfica</b></legend>                     <div id="graph-ui" style="width: 100%; height: 100%; background-color: rgb(255, 255, 255);"></div>                 </fieldset>            </div>               <div style="display: flex; flex-direction: row;">                 <fieldset style="margin: 5px; width: 90%;">                     <legend> <b>Datos parciales</b></legend>            <div> <label for="d-ynn" style="width: 10%;"> Tirante normal (m): </label>                         <input id="d-ynn" type="number" style="width: 10%;" readonly="readonly"> <label for="d-yc" style="width: 10%;"> Tirante crítico: </label>                         <input id="d-yc" type="number" style="width: 10%;" readonly="readonly">  <label for="d-N" style="width: 10%;"> Valor de N: </label>                         <input id="d-N" type="number" style="width: 10%;" readonly="readonly">  <label for="d-M" style="width: 10%;"> Valor de M: </label>                         <input id="d-M" type="number" style="width: 10%;" readonly="readonly">  <label for="d-J" style="width: 10%;"> Valor de J: </label>                         <input id="d-J" type="number" style="width: 10%;" readonly="readonly"> </div>         <div class="table">                 <table style="width: 100%;">                   <thead>                     <tr>                       <th style="width:  7.14%; ">y</th>                       <th style="width:  7.14%;">A</th>                       <th style="width:  7.14%;">p</th>                       <th style="width:  7.14%;">R</th>                       <th style="width:  7.14%;">T</th>                       <th style="width:  7.14%;">v</th>                       <th style="width:  7.14%;">Se</th>                       <th style="width:  7.14%;">1-Q2T/gA3</th>                       <th style="width:  7.14%;">So-Se</th>                       <th style="width:  7.14%;">f(y)</th>                       <th style="width:  7.14%;">deltax</th>                       <th style="width:  7.14%;">x</th>                     </tr>                   </thead>                   <tbody id="tabla1">                     </tbody>                 </table>               </div>               </fieldset>                 <fieldset style="margin: 5px; width: 10%;">                     <legend> <b>Datos finales</b></legend>                     <div class="table">                                  <table style="width: 100%;">                     <thead>                       <tr>                         <th style="width: 7.14%;">x</th>                         <th style="width: 7.14%;">y</th>                                                 </tr>                     </thead>                     <tbody id="tabla2">                                                 </tbody>                   </table>                              </div>                 </fieldset>            </div>             <fieldset style="margin: 5px;">                 <button id="btn-calcular"> Calcular</button>              <button id="btn-inicio"> Inicio</button>            </fieldset>'
+    win_body.innerHTML = data;
+    
+    document.getElementById('btn-inicio').addEventListener("click", function () {f_inicio();})
+    document.getElementById('btn-calcular').addEventListener("click", function () {
+
+        const q = parseFloat(document.getElementById("d-flow").value);
+        const b = parseFloat(document.getElementById("d-b").value);
+        const z1 = parseFloat(document.getElementById("d-z1").value);
+        const z2 = parseFloat(document.getElementById("d-z2").value);
+        const s = parseFloat(document.getElementById("d-s").value);
+        const n = parseFloat(document.getElementById("d-n").value);
+        const y1 = parseFloat(document.getElementById("d-y1").value);
+        const y2 = parseFloat(document.getElementById("d-y2").value);
+        const nt = parseFloat(document.getElementById("d-nt").value);
+        
+        const res = backm(q, b, z1, z2, s, n, y1, y2, nt);
+        let datat1 = ''
+        let datat2 = ''
+        for(let i=0; i<res.c1.length; i++){
+            datat1 += '<tr><td>'+ round(res.c1[i],4)+'</td> <td>'+ round(res.c2[i],4)+'</td> <td>'+round(res.c3[i],4)+'</td> <td>'+round(res.c4[i],4)+'</td> <td>'+round(res.c5[i],4)+'</td> <td>'+round(res.c6[i],4)+'</td> <td>'+round(res.c7[i],8)+'</td> <td>'+round(res.c8[i],4)+'</td> <td>'+round(res.c9[i],8)+'</td> <td>'+round(res.c10[i],4)+'</td> <td>'+round(res.c11[i],4)+'</td> <td>'+round(res.c12[i],4) + '</td></tr>'
+            datat2 += '<tr> <td>'+ round(res.c12[i], 4)+'</td> <td>'+round(res.c1[i],4)+'</td></tr>';
+        }
+        document.getElementById('tabla1').innerHTML = datat1
+        document.getElementById('tabla2').innerHTML = datat2
+        var trace1 = {
+            x: res.c12,
+            y: res.c1,
+            type: 'scatter'
+        };
+          
+          
+        var data = [trace1];      
+          var layout = {
+            
+            showlegend: false,
+
+            margin:{
+                l:60,
+                r:60,
+                b:20,
+                t:10,
+                pad:2
+            }
+        };
+        Plotly.newPlot('graph-ui', data, layout, {staticPlot: true});
+    });
+}
+
 f_inicio();
+
 document.getElementById("tn-trapez").addEventListener("click", f_trapez);
 
 document.getElementById("tn-parab").addEventListener("click", f_parab);
