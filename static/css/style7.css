@@ -44,6 +44,7 @@ table tr td:first-child {
 }
 
 table tr th {
+	text-align: center;
 	background: #979797;
 	border-top: 1px solid #bbb;
 	text-align: left;
