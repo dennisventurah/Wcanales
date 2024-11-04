@@ -515,6 +515,8 @@ export function integra_gra(q, b, z1, z2, s, nm, y1, y2, n){
         l_sose.push(s-see);
         l_fy.push(fy);
     })
+    l_dx.push(0.0);
+    l_A.push(AA);
     for(let i=1; i<l_y.length; i++){
         dx = Math.abs(l_y[i]-l_y[i-1])*(l_fy[i]+l_fy[i-1])/2;
         l_dx.push(dx);
