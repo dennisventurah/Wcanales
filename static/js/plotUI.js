@@ -883,10 +883,31 @@ let f_rm_int_g = function(e){
         let datat2 = ''
         for(let i=0; i<res.c1.length; i++){
             datat1 += '<tr><td>'+ round(res.c1[i],4)+'</td> <td>'+ round(res.c2[i],4)+'</td> <td>'+round(res.c3[i],4)+'</td> <td>'+round(res.c4[i],4)+'</td> <td>'+round(res.c5[i],4)+'</td> <td>'+round(res.c6[i],4)+'</td> <td>'+round(res.c7[i],4)+'</td> <td>'+round(res.c8[i],4)+'</td> <td>'+round(res.c9[i],4)+'</td> <td>'+round(res.c10[i],4)+'</td> <td>'+round(res.c11[i],4)+'</td> <td>' + '</td></tr>'
-            datat2 += '<tr> <td>'+ round(res.c1[i], 4)+'</td> <td>'+round(res.c11[i],4)+'</td></tr>';
+            datat2 += '<tr> <td>'+ round(res.c11[i], 4)+'</td> <td>'+round(res.c1[i],4)+'</td></tr>';
         }
+        document.getElementById('tabla1').innerHTML = datat1
         document.getElementById('tabla2').innerHTML = datat2
+        var trace1 = {
+            x: res.c11,
+            y: res.c1,
+            type: 'scatter'
+        };
+          
+          
+        var data = [trace1];      
+          var layout = {
+            
+            showlegend: false,
 
+            margin:{
+                l:60,
+                r:60,
+                b:20,
+                t:10,
+                pad:2
+            }
+        };
+        Plotly.newPlot('graph-ui', data, layout, {staticPlot: true});
     });
 }
 f_inicio();
