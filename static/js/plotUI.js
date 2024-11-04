@@ -882,7 +882,7 @@ let f_rm_int_g = function(e){
         let datat1 = ''
         let datat2 = ''
         for(let i=0; i<res.c1.length; i++){
-            datat1 += '<tr><td>'+ round(res.c1[i],4)+'</td> <td>'+ round(res.c2[i],4)+'</td> <td>'+round(res.c3[i],4)+'</td> <td>'+round(res.c4[i],4)+'</td> <td>'+round(res.c5[i],4)+'</td> <td>'+round(res.c6[i],4)+'</td> <td>'+round(res.c7[i],4)+'</td> <td>'+round(res.c8[i],4)+'</td> <td>'+round(res.c9[i],4)+'</td> <td>'+round(res.c10[i],4)+'</td> <td>'+round(res.c11[i],4)+'</td> <td>'+round(res.c12[i],4) + '</td></tr>'
+            datat1 += '<tr><td>'+ round(res.c1[i],4)+'</td> <td>'+ round(res.c2[i],4)+'</td> <td>'+round(res.c3[i],4)+'</td> <td>'+round(res.c4[i],4)+'</td> <td>'+round(res.c5[i],4)+'</td> <td>'+round(res.c6[i],4)+'</td> <td>'+round(res.c7[i],8)+'</td> <td>'+round(res.c8[i],4)+'</td> <td>'+round(res.c9[i],8)+'</td> <td>'+round(res.c10[i],4)+'</td> <td>'+round(res.c11[i],4)+'</td> <td>'+round(res.c12[i],4) + '</td></tr>'
             datat2 += '<tr> <td>'+ round(res.c12[i], 4)+'</td> <td>'+round(res.c1[i],4)+'</td></tr>';
         }
         document.getElementById('tabla1').innerHTML = datat1
