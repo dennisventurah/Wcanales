@@ -497,6 +497,7 @@ export function integra_gra(q, b, z1, z2, s, nm, y1, y2, n){
     let l_fy = new Array();
     let l_A = new Array();
     let l_dx = new Array();
+    let l_p = new Array();
     let ar, eam, see, rh, fy, c7, dx, peri;
     let AA = 0;
     l_y.forEach(item=>{
