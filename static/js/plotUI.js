@@ -888,7 +888,7 @@ let f_rm_int_g = function(e){
         document.getElementById('tabla1').innerHTML = datat1
         document.getElementById('tabla2').innerHTML = datat2
         var trace1 = {
-            x: res.c11,
+            x: res.c12,
             y: res.c1,
             type: 'scatter'
         };
