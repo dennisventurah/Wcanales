@@ -931,11 +931,11 @@ let f_rm_bakh = function(e){
         const nt = parseFloat(document.getElementById("d-nt").value);
         
         const res = backm(q, b, z1, z2, s, n, y1, y2, nt);
-        document.getElementById('r-yn').value = round(res.yn).toString();
-        document.getElementById('r-yc').value = round(res.yc).toString();
-        document.getElementById('r-N').value = round(res.N).toString();
-        document.getElementById('r-M').value = round(res.M).toString();
-        document.getElementById('r-J').value = round(res.J).toString();
+        document.getElementById('r-yn').value = round(res.yn, 6).toString();
+        document.getElementById('r-yc').value = round(res.yc, 6).toString();
+        document.getElementById('r-N').value = round(res.N, 6).toString();
+        document.getElementById('r-M').value = round(res.M, 6).toString();
+        document.getElementById('r-J').value = round(res.J, 6).toString();
         
         let datat1 = ''
         let datat2 = ''
