@@ -939,7 +939,7 @@ let f_rm_bakh = function(e){
         
         let datat1 = ''
         let datat2 = ''
-        for(let i=0; i<res.c1.length; i++){
+        for(let i=0; i<res.y.length; i++){
             datat1 += '<tr><td>'+ round(res.y[i],4)+'</td> <td>'+ round(res.u[i],4)+'</td> <td>'+round(res.v[i],4)+'</td> <td>'+round(res.fu[i],4)+'</td> <td>'+round(res.fv[i],4)+'</td> <td>'+round(res.dx[i],4)+'</td> <td>'+round(res.x[i],4)+ '</td></tr>'
             datat2 += '<tr> <td>'+ round(res.x[i], 4)+'</td> <td>'+round(res.y[i],4)+'</td></tr>';
         }
