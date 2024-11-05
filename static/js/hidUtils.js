@@ -613,7 +613,7 @@ export function breese(q, b, s, n, y1, y2, nt){
         
         l_c7.push(l_c6[i]-l_c6[i-1]+l_c7[i-1]);
     }
-    return {yn: yn, yc:yc, y: l_c1, z:l_c2, sx1:l_c3, phi:l_c4, sx2:l_c5, dx:l_c6, x:l_c7};
+    return {yn: yn, yc:yc, y: l_c1, z:l_c2, sx1:l_c3, phi:l_c4, sx2:l_c5, dx:l_c6, x:l_c7.map((x)=>Math.abs(x))};
 
 }
 
