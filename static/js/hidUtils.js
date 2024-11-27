@@ -20,7 +20,7 @@ export function new_rap(f, xo, ...args){
 }
 export function secante(f, xo){
     const delta = 1e-7;
-    var x1 = xo+delta*1000
+    var x1 = xo+delta*1000;
     var x2=0;
     let cont = 1;
     while(true){
@@ -697,6 +697,19 @@ export function compuerta(b, y1, a, cc){
 
 }
 
-export function orificio(){
-    
+export function orificio(a, h, cd){
+    return cd * a*Math.sqrt(G2*h);
 }
+
+export function vert_rect(l, h, n, cd){
+    return cd*(l-0.1*n*h)*Math.pow(h, 3/2)
+}
+
+export function vert_tri(h, cd){
+    return cd*Math.pow(h, 5/2)
+}
+
+export function vert_trap(l, h){
+    return 1.859*l*Math.pow(h, 3/2)
+}
+
