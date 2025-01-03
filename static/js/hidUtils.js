@@ -637,7 +637,7 @@ function trapY(y, q, b, z1, z2){
 
 export function dire_pt(q, b, z1, z2, s, n, y1, y2, nt){
     
-    var l_c1 = [], l_c2 = [], l_c3 = [], l_c4 = [], l_c5 = [], l_c6 = [], l_c7 = [], l_c8 = [], l_c9 = [], l_c10 = [], l_c11 = [], l_c12 = [], l_c13 = [];
+    var l_c1 = [], l_c2 = [], l_c3 = [], l_c4 = [], l_c5 = [], l_c6 = [], l_c7 = [], l_c8 = [], l_c9 = [], l_c10 = [], l_c11 = [], l_c12 = [], l_c13 = [], l_c14 = [];
     for(let i=0; i<=nt; i++){
         l_c1.push(y1+i*(y2-y1)/nt);
     }
@@ -652,6 +652,7 @@ export function dire_pt(q, b, z1, z2, s, n, y1, y2, nt){
         l_c5.push(rh1);
         l_c6.push(geo.v);
         l_c7.push(geo.e);
+        l_c14.push(geo.e-yy);
         l_c9.push(Math.pow(geo.v*n/rh1,2));
     }
     l_c13.push(0);
@@ -664,7 +665,7 @@ export function dire_pt(q, b, z1, z2, s, n, y1, y2, nt){
         l_c12.push(de/(s-se));
         l_c13.push(de/(s-se)+l_c13[i-1]);
     }
-    return {y:l_c1, a:l_c2, p:l_c3, rh:l_c4, rh1:l_c5, v:l_c6, e:l_c7, de:l_c8, se:l_c9, se1:l_c10, ds:l_c11, dx:l_c12, x:l_c13};
+    return {y:l_c1, a:l_c2, p:l_c3, rh:l_c4, rh1:l_c5, v:l_c6, v1:l_c14, e:l_c7, de:l_c8, se:l_c9, se1:l_c10, ds:l_c11, dx:l_c12, x:l_c13};
 }
 
 export function tra_fij(q, b, z1, z2, s, n, y1, nt, dx){
