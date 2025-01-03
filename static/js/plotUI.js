@@ -1,5 +1,5 @@
 import {max, round, letF, letFC} from './mathUtils.js'
-import { trapez, parab, circ, canalcomp, meh, smih, trapCri, paraCri, circCri, resalto_rec, resalto_trap, resalto_circ, resalto_para, backm, integra_gra, breese} from './hidUtils.js'
+import { trapez, parab, circ, canalcomp, meh, smih, trapCri, paraCri, circCri, resalto_rec, resalto_trap, resalto_circ, resalto_para, backm, integra_gra, breese, tra_fij, dire_pt} from './hidUtils.js'
 /*
 
 function hexToRGB(hex, alpha) {
@@ -1021,6 +1021,59 @@ let f_rm_bresse = function(e){
     });
 }
 
+let f_rm_dt = function(e){
+    document.getElementById("title-bar-text").innerHTML = "WCanales - Curva de remanso - Directo por tramos"
+    const win_body = document.getElementById("win-body");
+    var data = '<div style="display: flex; flex-direction: row;">             <fieldset style="margin: 5px; width: 30%;">                     <legend> <b>Datos</b></legend>                     <div class="field-row">                         <label for="d-flow" style="width: 20%;"> Caudal: </label>                         <input id="d-flow" type="number" style="width: 60%;">                         <label for="d-flow" style="width: 20%;"> m3/s </label>                             </div>                          <div class="field-row">                                             <label for="d-b" style="width: 20%;"> Ancho de solera (b): </label>                         <input id="d-b" type="number" style="width: 60%;">                         <label for="d-b" style="width: 20%;"> m </label>                             </div>               <div class="field-row">                                             <label for="d-z1" style="width: 20%;"> Talud izquierdo: </label>                         <input id="d-z1" type="number" style="width: 60%;">                         <label for="d-z1" style="width: 20%;"> m/m </label>                             </div>               <div class="field-row">                                             <label for="d-z2" style="width: 20%;"> Talud derecho: </label>                         <input id="d-z2" type="number" style="width: 60%;">                         <label for="d-z2" style="width: 20%;"> m/m </label>                             </div>               <div class="field-row">                                             <label for="d-s" style="width: 20%;"> Pendiente (S): </label>                         <input id="d-s" type="number" style="width: 60%;">                         <label for="d-s" style="width: 20%;"> m/m </label>                             </div>               <div class="field-row">                                             <label for="d-n" style="width: 20%;"> Rugosidad (n): </label>                         <input id="d-n" type="number" style="width: 60%;">                         <label for="d-n" style="width: 20%;">  </label>                             </div>               <div class="field-row" style="flex: content;">                         <label for="d-y1" style="width: 20%;"> Tirante inicial (y1): </label>                         <input id="d-y1" type="number" style="width: 60%;">                         <label for="d-y1" style="width: 20%;"> m </label>                     </div>               <div class="field-row" style="flex: content;">                         <label for="d-y2" style="width: 20%;"> Tirante inicial (y2): </label>                         <input id="d-y2" type="number" style="width: 60%;">                         <label for="d-y2" style="width: 20%;"> m </label>                     </div>                 <div class="field-row" style="flex: content;">                         <label for="d-nt" style="width: 20%;"> Número de tramos (nt): </label>                         <input id="d-nt" type="number" style="width: 60%;">                         <label for="d-nt" style="width: 20%;"> m </label>                     </div>                     </fieldset>                 <fieldset style="margin: 5px; width: 70%;">                     <legend> <b>Gráfica</b></legend>                     <div id="graph-ui" style="width: 100%; height: 100%; background-color: rgb(255, 255, 255);"></div>                 </fieldset>            </div>               <div style="display: flex; flex-direction: row;">                 <fieldset style="margin: 5px; width: 90%;">                     <legend> <b>Datos parciales</b></legend>               <div class="table">                 <table style="width: 100%;">                   <thead>                     <tr>                       <th style="width:  11.11%; ">y</th>                       <th style="width:  11.11%;">A</th>                       <th style="width:  11.11%;">p</th>                       <th style="width:  11.11%;">R</th>                       <th style="width:  11.11%;">R^(2/3)</th>                       <th style="width:  11.11%;">v</th>                       <th style="width:  11.11%;">v^2/2g</th>                       <th style="width:  11.11%;">E</th>                       <th style="width:  11.11%;">dE</th>                       <th style="width:  11.11%;">Se</th>                       <th style="width:  11.11%;">SeP</th>                       <th style="width:  11.11%;">So-SeP</th>                       <th style="width:  11.11%;">dX</th>                       <th style="width:  11.11%;">X</th>       </tr>                   </thead>                   <tbody id="tabla1">                     </tbody>                 </table>               </div>               </fieldset>                 <fieldset style="margin: 5px; width: 10%;">                     <legend> <b>Datos finales</b></legend>                     <div class="table">                                  <table style="width: 100%;">                     <thead>                       <tr>                         <th style="width: 11.11%;">x</th>                         <th style="width: 11.11%;">y</th>                                                 </tr>                     </thead>                     <tbody id="tabla2">                                                 </tbody>                   </table>                              </div>                 </fieldset>            </div>             <fieldset style="margin: 5px;">                 <button id="btn-calcular"> Calcular</button>              <button id="btn-inicio"> Inicio</button>            </fieldset>'
+    win_body.innerHTML = data;
+
+    document.getElementById('btn-inicio').addEventListener("click", function () {f_inicio();})
+    document.getElementById('btn-calcular').addEventListener("click", function () {
+
+        const q = parseFloat(document.getElementById("d-flow").value);
+        const b = parseFloat(document.getElementById("d-b").value);
+        const z1 = parseFloat(document.getElementById("d-z1").value);
+        const z2 = parseFloat(document.getElementById("d-z2").value);
+        const s = parseFloat(document.getElementById("d-s").value);
+        const n = parseFloat(document.getElementById("d-n").value);
+        const y1 = parseFloat(document.getElementById("d-y1").value);
+        const y2 = parseFloat(document.getElementById("d-y2").value);
+        const nt = parseFloat(document.getElementById("d-nt").value);
+        
+        const res = dire_pt(q, b, z1, z2, s, n, y1, y2, nt);
+        
+        let datat1 = ''
+        let datat2 = ''
+        for(let i=0; i<res.y.length; i++){
+            datat1 += '<tr><td>'+ round(res.y[i],4)+'</td> <td>'+ round(res.a[i],4)+'</td> <td>'+round(res.v[i],4)+'</td> <td>'+round(res.fu[i],4)+'</td> <td>'+round(res.fv[i],4)+'</td> <td>'+round(res.dx[i],4)+'</td> <td>'+round(res.x[i],4)+ '</td></tr>'
+            datat2 += '<tr> <td>'+ round(res.x[i], 4)+'</td> <td>'+round(res.y[i],4)+'</td></tr>';
+        }
+        document.getElementById('tabla1').innerHTML = datat1
+        document.getElementById('tabla2').innerHTML = datat2
+        var trace1 = {
+            x: res.x,
+            y: res.y,
+            type: 'scatter'
+        };
+          
+          
+        var data = [trace1];      
+          var layout = {
+            
+            showlegend: false,
+
+            margin:{
+                l:60,
+                r:60,
+                b:20,
+                t:10,
+                pad:2
+            }
+        };
+        Plotly.newPlot('graph-ui', data, layout, {staticPlot: true});
+    });
+}
+
 f_inicio();
 
 document.getElementById("tn-trapez").addEventListener("click", f_trapez);
@@ -1050,3 +1103,6 @@ document.getElementById("rh-circ").addEventListener("click", f_rs_circ);
 document.getElementById("rm-ingr").addEventListener("click", f_rm_int_g);
 document.getElementById("rm-bakh").addEventListener("click", f_rm_bakh);
 document.getElementById("rm-bre").addEventListener("click", f_rm_bresse);
+document.getElementById("rm-dpt").addEventListener("click", f_rm_dt);
+
+
