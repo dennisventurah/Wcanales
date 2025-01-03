@@ -1045,7 +1045,7 @@ let f_rm_dt = function(e){
         let datat1 = ''
         let datat2 = ''
         for(let i=0; i<res.y.length; i++){
-            datat1 += '<tr><td>'+ round(res.y[i],4)+'</td> <td>'+ round(res.a[i],4)+'</td> <td>'+round(res.rh[i],4)+'</td> <td>'+round(res.rh1[i],4)+'</td> <td>'+round(res.v[i],4)+'</td> <td>'+round(res.v1[i],4)+'</td> <td>'+round(res.e[i],4) +'</td> <td>'+round(res.de[i],4) +'</td> <td>'+round(res.se[i],4)+'</td> <td>'+round(res.se1[i],4)+'</td> <td>'+round(res.ds[i],4) +'</td> <td>'+round(res.dx[i],4) +'</td> <td>'+round(res.x[i],4)+ '</td></tr>'
+            datat1 += '<tr><td>'+ round(res.y[i],4)+'</td> <td>'+ round(res.a[i],4)+'</td> <td>'+ round(res.p[i],4)+'</td> <td>'+round(res.rh[i],4)+'</td> <td>'+round(res.rh1[i],4)+'</td> <td>'+round(res.v[i],4)+'</td> <td>'+round(res.v1[i],4)+'</td> <td>'+round(res.e[i],4) +'</td> <td>'+round(res.de[i],4) +'</td> <td>'+round(res.se[i],4)+'</td> <td>'+round(res.se1[i],4)+'</td> <td>'+round(res.ds[i],4) +'</td> <td>'+round(res.dx[i],4) +'</td> <td>'+round(res.x[i],4)+ '</td></tr>'
             datat2 += '<tr> <td>'+ round(res.x[i], 4)+'</td> <td>'+round(res.y[i],4)+'</td></tr>';
         }
         document.getElementById('tabla1').innerHTML = datat1

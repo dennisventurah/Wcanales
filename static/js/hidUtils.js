@@ -663,7 +663,7 @@ export function dire_pt(q, b, z1, z2, s, n, y1, y2, nt){
         l_c10.push(se);
         l_c11.push(s-se);
         l_c12.push(de/(s-se));
-        l_c13.push(de/(s-se)+Math.abs(l_c13[i-1]));
+        l_c13.push(Math.abs(de/(s-se))+Math.abs(l_c13[i-1]));
     }
     return {y:l_c1, a:l_c2, p:l_c3, rh:l_c4, rh1:l_c5, v:l_c6, v1:l_c14, e:l_c7, de:l_c8, se:l_c9, se1:l_c10, ds:l_c11, dx:l_c12, x:l_c13};
 }
