@@ -1090,18 +1090,19 @@ let f_rm_tf = function(e){
         const s = parseFloat(document.getElementById("d-s").value);
         const n = parseFloat(document.getElementById("d-n").value);
         const y1 = parseFloat(document.getElementById("d-y1").value);
-        const y2 = parseFloat(document.getElementById("d-y2").value);
+        
         const nt = parseFloat(document.getElementById("d-nt").value);
+        const dx = parseFloat(document.getElementById("d-dx").value);
         
-        const res = dire_pt(q, b, z1, z2, s, n, y1, y2, nt);
+        const res = tra_fij(q, b, z1, z2, s, n, y1, nt, dx);
         
-        let datat1 = ''
         let datat2 = ''
+
         for(let i=0; i<res.y.length; i++){
-            datat1 += '<tr><td>'+ round(res.y[i],4)+'</td> <td>'+ round(res.a[i],4)+'</td> <td>'+ round(res.p[i],4)+'</td> <td>'+round(res.rh[i],4)+'</td> <td>'+round(res.rh1[i],4)+'</td> <td>'+round(res.v[i],4)+'</td> <td>'+round(res.v1[i],4)+'</td> <td>'+round(res.e[i],4) +'</td> <td>'+round(res.de[i],4) +'</td> <td>'+round(res.se[i],4)+'</td> <td>'+round(res.se1[i],4)+'</td> <td>'+round(res.ds[i],4) +'</td> <td>'+round(res.dx[i],4) +'</td> <td>'+round(res.x[i],4)+ '</td></tr>'
+            
             datat2 += '<tr> <td>'+ round(res.x[i], 4)+'</td> <td>'+round(res.y[i],4)+'</td></tr>';
         }
-        document.getElementById('tabla1').innerHTML = datat1
+  
         document.getElementById('tabla2').innerHTML = datat2
         var trace1 = {
             x: res.x,
